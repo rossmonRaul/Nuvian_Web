@@ -12,5 +12,10 @@ namespace Nuvian_Web.Controllers
         {
             return View();
         }
+
+        public IActionResult BasePage()
+        {
+            return View();
+        }
     }
 }
