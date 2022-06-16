@@ -5,18 +5,20 @@
 }
 
 @section Styles{
-<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
 }
 
 <partial name="NuevoUsuario" />
 <hr />
+<br />
+<br />
 <partial name="ListUsers" />
 
 @section Scripts{
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#Users_table').DataTable();
-    });
-</script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Users_table').DataTable();
+        });
+    </script>
 }
