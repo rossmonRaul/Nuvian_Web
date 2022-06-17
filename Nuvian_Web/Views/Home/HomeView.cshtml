@@ -1,8 +1,24 @@
 ﻿
 @{
     ViewData["Title"] = "HomeView";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>HomeView</h1>
+<body>
+    <header>
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse ">
+            <br />
+            
+                <h3 class="text-center text-dark ">Administración</h3>
+           
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4" >
+           
+                    <a asp-action="BasePage" asp-controller="User" class="list-group-item list-group-item-action py-2 ripple   etiquetas"><i style="color:dimgrey" class="bi bi-people fa-fw me-3"></i><span>    Usuarios</span></a>
+              
+                </div>
+            </div>
+        </nav>
 
+    </header>
+</body>
