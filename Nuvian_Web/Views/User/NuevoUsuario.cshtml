@@ -1,4 +1,6 @@
-﻿
+﻿@section Styles{
+
+}
 
 <br />
 <br />
@@ -9,20 +11,22 @@
 </div>
 <br />
 <br />
-<form class=" ">
+<form class="formulario " id="formulario">
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gIdentificacion">
                 <label class="etiquetas" for="InputID1">Identificación</label>
-                <input type="text" class="form-control" id="txtIdentificacion" required>
+                <input type="text" class="form-control" id="identificacion" name="identificacion">
+                <p class="mensaje_error">El usuario debe contener solo números, máximo 10 dígitos</p>
             </div>
 
         </div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gPassword">
                 <label class="etiquetas" for="InputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="txtPassword" required>
+                <input type="password" class="form-control" id="password" name="password">
+                <p class="mensaje_error">La contraseña debe contener solo caracteres alfanumericos, máximo 25 dígitos</p>
             </div>
         </div>
         <div class="col"></div>
@@ -34,16 +38,18 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gNombre">
                 <label class="etiquetas" for="InputNombre1">Nombre</label>
-                <input type="text" class="form-control" id="txtNombre" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" maxlength="25">
+                <p class="mensaje_error">El nombre debe contener solo letras, máximo 25 dígitos</p>
             </div>
 
         </div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gApellido1">
                 <label class="etiquetas" for="InputApellido1">Primer Apellido</label>
-                <input type="text" class="form-control" id="txtApellido1" required>
+                <input type="text" class="form-control" id="apellido1" name="apellido1" maxlength="25">
+                <p class="mensaje_error">El primer apellido debe contener solo letras, máximo 25 dígitos</p>
             </div>
         </div>
         <div class="col"></div>
@@ -52,16 +58,18 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gApellido2">
                 <label class="etiquetas" for="InputApellido2">Segundo Apellido</label>
-                <input type="password" class="form-control" id="txtApellido2" required>
+                <input type="text" class="form-control" id="apellido2" name="apellido2" maxlength="25">
+                <p class="mensaje_error">El segundo apellido debe contener solo letras, máximo 25 dígitos</p>
             </div>
 
         </div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gCorreo">
                 <label class="etiquetas" for="InputCorreo1">Correo Electrónico</label>
-                <input type="password" class="form-control" id="txtCorreo" required>
+                <input type="email" class="form-control" id="correo" name="correo" placeholder="example@gmail.com">
+                <p class="mensaje_error">El correo debe tener como máximo 25 dígitos</p>
             </div>
         </div>
         <div class="col"></div>
@@ -70,16 +78,17 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gTelefono">
                 <label class="etiquetas" for="InputTelefono1">Teléfono</label>
-                <input type="password" class="form-control" id="txtTelefono" required>
+                <input type="password" class="form-control" id="telefono" name="telefono" placeholder="8888-8888">
+                <p class="mensaje_error">El telefono debe contener solo números, máximo 10 dígitos</p>
             </div>
 
         </div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gFecha">
                 <label class="etiquetas" for="InputCorreo1">Fecha Nacimiento</label>
-                <input type="password" class="form-control" id="txtPassword" required>
+                <input type="date" class="form-control" id="fecha" name="fecha">
             </div>
         </div>
         <div class="col"></div>
@@ -90,13 +99,13 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="gAeropuerto">
                 <label class="etiquetas" for="InputApellido2">Aeropuerto</label>
-                @*<select class="js-example-basic-single" name="state">
-                    <option value="AL">Dato 1</option>
-                    
-                    <option value="WY">Dato 2</option>
-                </select>*@
+                <select id="aeropuerto" class="form-control">
+                    <option value="">Dato 1</option>
+                    <option value="">Dato 2</option>
+
+                </select>
             </div>
 
         </div>
@@ -111,7 +120,7 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block">Guardar</button>
+                <button id="btnGuardar"  type="submit" class="btn btn-success btn-block" disabled="disabled">Guardar</button>
             </div>
 
         </div>
@@ -124,3 +133,12 @@
     </div>
 
 </form>
+
+@section Scripts{
+  
+
+ 
+
+}
+
+
