@@ -1,6 +1,4 @@
-﻿
-using BussinesLogic.Models;
-using BussinesLogic.Services;
+﻿using BussinesLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,9 +10,6 @@ namespace Nuvian_Web.Controllers
 {
     public class UserController : Controller
     {
-
-        
-
         private readonly ILogger<UserController> _logger;
         private readonly IServiceAPI _service;
         public UserController(ILogger<UserController> logger, IServiceAPI service)
