@@ -14,5 +14,8 @@ namespace BussinesLogic.Services
         Task<List<UsuariosbyID>> ObtenerUsuario(int id);
         //Tarea para editar los datos de los usuarios
         Task<bool> EditarUsuario(ActualizarUsuario actualizar);
+        UserModel Create(UserModel usuarios);
+
+        bool Delete(int ID_USR);
     }
 }

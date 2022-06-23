@@ -55,7 +55,7 @@ const validarFormulario = (e) => {
 }
 
 
-const validarDatos = (vali,input,campo) => {
+const validarDatos = (vali,input,campo)=>{
 
 	if (vali.test(input.value)) {
 		document.querySelector(`#g${campo} .mensaje_error`).classList.remove('mensaje_error_activo');
@@ -64,14 +64,13 @@ const validarDatos = (vali,input,campo) => {
 		document.querySelector(`#g${campo} .mensaje_error`).classList.add('mensaje_error_activo');
 		campos[campo] = false;
 	}
-
-	ActivarBtnGuardar();
+      ActivarBtnGuardar();
 }
 
 
 
 
-inputs.forEach((input) => {
+inputs.forEach((input) =>{
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
 });
@@ -79,7 +78,7 @@ inputs.forEach((input) => {
 
 
 
-function ActivarBtnGuardar() {
+function ActivarBtnGuardar(){
 
 	if (campos.Identificacion && campos.Password && campos.Nombre && campos.Apellido1 && campos.Apellido2 && campos.Correo && campos.Telefono ) {
 		console.log("prueba");
@@ -90,5 +89,75 @@ function ActivarBtnGuardar() {
 }
 	
 
+
+$("#btnGuardar").click(function () {
+	
+	var user = {
+	
+		"Nombre": $("#nombre").val(),
+		"Apellido1": $("#apellido1").val(),
+		"Apellido2": $("#apellido2").val(),
+		"Cedula": $("#identificacion").val(),
+		"ID_Aeropuerto": '1',
+		"Correo": $("#correo").val(),
+		"Telefono": $("#telefono").val(),
+		"FechaNacimiento": $("#fecha").val(),
+		"Contraseña": $("#password").val()
+	}
+	$.ajax({
+		type: "POST",
+		url: "/User/NuevoUsuario",
+		data: user,
+		dataType: "json",
+		cache: false,
+		success: function (data) {
+			alert("Se ingreso");
+
+		},
+		error: function (data, textStatus, errorThrown) {
+			
+		}
+
+	});
+
+});
+
+$("#btnEliminar").click(function () {
+
+	Swal.fire({
+		title: "Eliminar usuario",
+		text: '¿Esta seguro que desea eliminar el usuario seleccionado?',
+		showDenyButton: true,
+		confirmButtonColor: '#57BA5B',
+		denyButtonColor: '#CF4238',
+		confirmButtonText: 'Aceptar',
+		denyButtonText: 'Cancelar',
+	}).then((result) => {
+
+		if (result.isConfirmed) {
+
+			var user = {
+				"ID_USR": '27',
+			}
+			$.ajax({
+				type: "POST",
+				url: "/User/EliminarUsuario",
+				data: user,
+				dataType: "json",
+				cache: false
+
+			}).done(function (res) {
+				Swal.fire('Se eliminó el usuario')
+				
+			});
+
+		} else {
+
+		}
+	})
+
+
+
+});
 
 

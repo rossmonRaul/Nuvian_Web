@@ -27,6 +27,45 @@ namespace Nuvian_Web.Controllers
             return View();
         }
 
-       
+     
+
+
+        [HttpPost]
+        public IActionResult NuevoUsuario(UserModel user)
+        {
+            try
+            {
+                _service.Create(user);
+
+                return View();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+        [HttpPost]
+        public bool EliminarUsuario(UserModel user)
+        {
+            try
+            {
+             
+                return _service.Delete(user.ID_USR); 
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
     }
 }
