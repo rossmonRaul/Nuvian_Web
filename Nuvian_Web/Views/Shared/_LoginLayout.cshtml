@@ -6,10 +6,12 @@
     <title>@ViewData["Title"] - Nuvian_Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
 <body>
     <header>
-       
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -20,12 +22,14 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             <i style="color:white">Developed by IT Rossmon </i>
-            </div>
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.all.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
