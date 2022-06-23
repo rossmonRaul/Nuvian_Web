@@ -17,18 +17,18 @@ namespace BussinesLogic.Services
             _baseurl = "http://localhost:3033";
         }
 
-
         public UserModel Create(UserModel usuarios)
         {
             var users = new UserModel();
 
-            try {
-                using ( var cliente = new HttpClient())
+            try
+            {
+                using (var cliente = new HttpClient())
                 {
 
                     string obj = JsonConvert.SerializeObject(usuarios);
                     var content = new StringContent(obj, Encoding.UTF8, "application/json");
-                   var respuesta = cliente.PostAsync(_baseurl + "/api/users/postUsuarios", content);
+                    var respuesta = cliente.PostAsync(_baseurl + "/api/users/postUsuarios", content);
                     respuesta.Wait();
 
                     if (respuesta.Result.IsSuccessStatusCode)
@@ -36,11 +36,12 @@ namespace BussinesLogic.Services
                         var rest = respuesta.Result.Content.ReadAsStringAsync();
                         users = JsonConvert.DeserializeObject<UserModel>(rest.Result);
                     }
-                        
+
                 }
-            
+
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw;
             }
 
@@ -51,7 +52,7 @@ namespace BussinesLogic.Services
         {
             var users = new UserModel();
             users.ID_USR = id;
-           
+
             bool res = false;
 
             try
@@ -81,13 +82,6 @@ namespace BussinesLogic.Services
 
             return res;
         }
-        private static string _baseurl;
-        public ServiceAPI()
-        {
-            _baseurl = "http://localhost:3033";
-
-        }
-
         public async Task<bool> EditarUsuario(ActualizarUsuario actualizar)
         {
             bool respuesta = false;
@@ -145,5 +139,47 @@ namespace BussinesLogic.Services
             lst = objeto.Recuperados;
             return lst;
         }
+
+        public async Task<List<AirportsModel.airportsList>> ListarAeropuertos()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(_baseurl);
+            var response = await client.GetAsync("/api/airports/");
+
+            //List<Students> list = new List<Students>();
+            var list = new AirportsModel();
+            var lst = new List<AirportsModel.airportsList>();
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                list = JsonConvert.DeserializeObject<AirportsModel>(json_response);
+                lst = list.airports;
+            }
+
+            return lst;
+        }
+
+        public async Task<bool> login(string cedula, string contra)
+        {
+            bool respuesta = false;
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(_baseurl);
+
+            var response = await client.PostAsync($"/api/users/login/{cedula}/{contra}", null);
+            var result = new Login();
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<Login>(json_response);
+                if (!result.airport.ID_Aeropuerto.Equals(0))
+                {
+                    respuesta = true;
+                }
+            }
+
+            return respuesta;
+        }
+
     }
 }

@@ -17,7 +17,7 @@
         <section class="row justify-content-center ">
             <section class="col-12 col-sm-6 col-md-4 ">
 
-                <form class=" rounded-5 shadow-5-strong p-5  form-control">
+                <div class=" rounded-5 shadow-5-strong p-5  form-control">
                     <div class="">
                         <img class="imgLogo" src="~/images/iconCIIADHEL2.png" />
                     </div>
@@ -26,16 +26,17 @@
                         <input type="text" pattern="[1-9]-?\d{4}-?\d{4}" maxlength="10" title="Formato: 1-2345-6789" class="form-control" required="" id="txtUsuario" @*aria-describedby="idHelp"*@>
                         @*   <small id="idHelp" class="form-text text-muted"></small>*@
                     </div>
-                 
+
                     <div class="form-group">
                         <label class="etiquetas" for="InputPassword1">Contraseña</label>
-                        <input type="password"  class="form-control" id="txtPassword" maxlength="25" required>
+                        <input type="password" class="form-control" id="txtPassword" maxlength="25" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btnIngresar">Ingresar</button>
+                    <button type="submit" class="btn btn-primary btn-block btnIngresar" id="log">Ingresar</button>
                     <br />
                     <div class="form-group">
                         <a href="#" data-toggle="popover" title="Información" data-content="Comuníquese por correo electrónico a soportenuvian@rossmon.co.cr o bien comuníquese por vía telefónica con el administrador al +506 85903615">¿Olvidó su contraseña?</a>
+                        <h6 id="errormsg" style="color:red;"></h6>
                     </div>
 
                     <div class="form-group">
@@ -43,7 +44,7 @@
                     </div>
 
 
-                </form>
+                </div>
 
             </section>
         </section>
@@ -57,7 +58,7 @@
 @section Scripts{
     <script src="~/js/login.js"></script>
 
-    
+
 
 }
 

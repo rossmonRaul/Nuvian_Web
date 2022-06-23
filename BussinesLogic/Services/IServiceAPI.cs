@@ -15,7 +15,11 @@ namespace BussinesLogic.Services
         //Tarea para editar los datos de los usuarios
         Task<bool> EditarUsuario(ActualizarUsuario actualizar);
         UserModel Create(UserModel usuarios);
-
         bool Delete(int ID_USR);
+        //Tarea para listar los aeropuertos que se utilizaran en el rellenado de los combo box
+        Task<List<AirportsModel.airportsList>> ListarAeropuertos();
+        //Tarea para validar el login
+        Task<bool> login(string cedula, string contra);
+
     }
 }
