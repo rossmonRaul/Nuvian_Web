@@ -28,15 +28,14 @@ namespace Nuvian_Web.Controllers
             return View();
         }
 
+
+
         [HttpPost]
-        public IActionResult NuevoUsuario(UserModel user)
+        public bool NuevoUsuario(UserModel user)
         {
             try
             {
-                _service.Create(user);
-
-                return View();
-
+                return  _service.Create(user);
             }
             catch (Exception)
             {
@@ -45,7 +44,6 @@ namespace Nuvian_Web.Controllers
             }
 
         }
-
 
         [HttpPost]
         public bool EliminarUsuario(UserModel user)
@@ -62,6 +60,15 @@ namespace Nuvian_Web.Controllers
                 throw;
             }
 
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> ListarUsuarios()
+        {
+
+            List<UsuariosAll> list = new List<UsuariosAll>();
+            list = await _service.ListarUsuarios();
+            return Json(list);
         }
 
         [HttpGet]

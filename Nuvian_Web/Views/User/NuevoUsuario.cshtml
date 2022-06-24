@@ -11,10 +11,11 @@
 </div>
 <br />
 <br />
-<form class="formulario " id="formulario">
+<div class="formulario " id="formulario">
     <div class="row">
         <div class="col"></div>
         <div class="col">
+            <input type="hidden" class="form-control" value="" id="idUSR" name="idUSR">
             <div class="form-group" id="gIdentificacion">
                 <label class="etiquetas" for="InputID1">Identificación</label>
                 <input type="text" class="form-control" id="identificacion" name="identificacion">
@@ -80,16 +81,17 @@
         <div class="col">
             <div class="form-group" id="gTelefono">
                 <label class="etiquetas" for="InputTelefono1">Teléfono</label>
-                <input type="password" class="form-control" id="telefono" name="telefono" placeholder="8888-8888">
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="8888-8888">
                 <p class="mensaje_error">El telefono debe contener solo números, máximo 10 dígitos</p>
             </div>
-
         </div>
         <div class="col">
             <div class="form-group" id="gFecha">
                 <label class="etiquetas" for="InputCorreo1">Fecha Nacimiento</label>
                 <input type="date" class="form-control" id="fecha" name="fecha">
+                <p class="mensaje_error">La fecha de nacimiento es requerida</p>
             </div>
+
         </div>
         <div class="col"></div>
     </div>
@@ -100,9 +102,12 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group" id="gAeropuerto">
-                <label class="etiquetas" for="InputApellido2">Aeropuerto</label>
-                <select id="aeropuerto" class="form-control js-example-basic-single">
+                <label class="etiquetas" for="InputAeropuerto2">Aeropuerto</label>
+                <select id="aeropuerto" class="form-control js-example-basic-single  " onchange="validarAeropuerto()">
+                  
+
                 </select>
+                <p class="mensaje_error">El aeropuerto es requerido</p>
             </div>
 
         </div>
@@ -129,13 +134,13 @@
         <div class="col"></div>
     </div>
 
-</form>
+</div>
 
 @*<div class="col">
-    <div class="form-group">
-        <button id="btnEliminar" type="button" class="btn btn-danger btn-block">Eliminar</button>
-    </div>
-</div>*@
+        <div class="form-group">
+            <button id="btnEliminar" type="button" class="btn btn-danger btn-block">Eliminar</button>
+        </div>
+    </div>*@
 
 @section Scripts{
 
