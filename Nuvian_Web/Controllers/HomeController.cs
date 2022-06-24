@@ -31,10 +31,11 @@ namespace Nuvian_Web.Controllers
         }
       
         [HttpPost]
-        public async Task<string> Login(string cedula, string contra)
+        public async Task<string> Login(string cedula, string contrasena)
         {
             bool resp;
-            resp = await _service.login(cedula, contra);
+            //Se envian los parametros a la interface para realizar la validacion del login, esta devuelve y bool (true/false) segun la accion con haya respondido la api
+            resp = await _service.login(cedula, contrasena);
             return Convert.ToString(resp);
         }
 

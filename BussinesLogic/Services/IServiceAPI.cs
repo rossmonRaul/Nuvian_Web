@@ -14,12 +14,14 @@ namespace BussinesLogic.Services
         Task<List<UsuariosbyID>> ObtenerUsuario(int id);
         //Tarea para editar los datos de los usuarios
         Task<bool> EditarUsuario(ActualizarUsuario actualizar);
+        //Tarea para crear nuevos usuarios
         UserModel Create(UserModel usuarios);
+        //Tarea para eliminar usuarios
         bool Delete(int ID_USR);
         //Tarea para listar los aeropuertos que se utilizaran en el rellenado de los combo box
         Task<List<AirportsModel.airportsList>> ListarAeropuertos();
         //Tarea para validar el login
-        Task<bool> login(string cedula, string contra);
+        Task<bool> login(string cedula, string contrasena);
 
     }
 }

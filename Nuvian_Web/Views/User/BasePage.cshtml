@@ -1,28 +1,25 @@
-﻿
-@{
-    ViewData["Title"] = "View";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
+﻿@{ ViewData["Title"] = "View";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 @section Styles{
- 
 }
-
 <partial name="NuevoUsuario" />
 <hr />
 <br />
 <br />
 <partial name="ListUsers" />
-
 @section Scripts{
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#Users_table').DataTable();
         });
     </script>
-
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
     <script src="~/js/formulario.js"></script>
-  
-
 }

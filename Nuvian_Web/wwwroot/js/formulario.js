@@ -67,16 +67,10 @@ const validarDatos = (vali,input,campo)=>{
       ActivarBtnGuardar();
 }
 
-
-
-
 inputs.forEach((input) =>{
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
 });
-
-
-
 
 function ActivarBtnGuardar(){
 
@@ -87,8 +81,6 @@ function ActivarBtnGuardar(){
 		document.getElementById("btnGuardar").disabled = true;
     }
 }
-	
-
 
 $("#btnGuardar").click(function () {
 	
@@ -160,4 +152,19 @@ $("#btnEliminar").click(function () {
 
 });
 
+$(document).ready(function () {
+	
+	$.ajax({
+		url: '/User/CargarCombo',
+		type: 'GET',
+		dataType: 'json',
+		success: function (data) {
+			$('#aeropuerto').get(0).options.length = 0;
+			
 
+			for (const item of data) {
+				$('#aeropuerto').get(0).options[$('#aeropuerto').get(0).options.length] = new Option(item.nombre + "-" + item.nombre_OACI, item.iD_Aeropuerto);
+            }
+        }
+	})
+})
