@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BussinesLogic.Models;
 
 namespace Nuvian_Web.Controllers
 {
@@ -26,9 +27,6 @@ namespace Nuvian_Web.Controllers
         {
             return View();
         }
-
-     
-
 
         [HttpPost]
         public IActionResult NuevoUsuario(UserModel user)
@@ -66,6 +64,14 @@ namespace Nuvian_Web.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<JsonResult> CargarCombo()
+        {
+            List<AirportsModel.airportsList> airports = new List<AirportsModel.airportsList>();
+            airports = await _service.ListarAeropuertos();
+
+            return Json(airports);
+        }
 
     }
 }
