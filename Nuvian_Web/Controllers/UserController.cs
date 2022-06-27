@@ -80,5 +80,19 @@ namespace Nuvian_Web.Controllers
             return Json(airports);
         }
 
+        [HttpGet]
+        public async Task<JsonResult> BuscarUsarioID(int id)
+        {
+            List<UsuariosbyID> lst = await _service.ObtenerUsuario(id);
+            return Json(lst);
+        }
+
+        [HttpPost]
+        public async Task<bool> EditarUsuario(ActualizarUsuario actualizar)
+        {
+            return await _service.EditarUsuario(actualizar);
+        }
+
+
     }
 }

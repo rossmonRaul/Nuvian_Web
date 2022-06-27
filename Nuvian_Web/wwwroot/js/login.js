@@ -7,8 +7,6 @@ function validarDATA() {
     let user = document.getElementById('txtUsuario').value;
     let password = document.getElementById('txtPassword').value;
     document.getElementById('errormsg').innerHTML = '';
-    console.log(user)
-    console.log(password);
     if (user === '') {
         document.getElementById('log').disabled = true;
     }
