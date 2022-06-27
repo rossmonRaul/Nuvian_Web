@@ -84,20 +84,14 @@ body {
 .imgLogin {
     background: url('../images/airport.jpg') no-repeat;
     background-position: center;
-   
     background-size: cover;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: center;
 }
 
 /* Logo imagen*/
 .imgLogo {
-    width: 200px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    margin-left: 20px;
+    width: 150px;
+    /*   margin-top: 30px;
+    margin-bottom: 20px;*/
 }
 
 
@@ -130,18 +124,15 @@ body {
 .titulo {
     color: #449FC7;
     border: 2px solid #449FC7;
-    border-radius:30px;
+    border-radius: 30px;
     font-size: 22px;
 }
 
 
 .titulo2 {
     color: white;
-  
- 
-    font-size: 20px;
+    font-size: 15px;
 }
-
 
 
 
@@ -152,6 +143,7 @@ body {
 }
 
 
+/*Menu de lado izquierdo*/
 /* Sidebar */
 .sidebar {
     position: fixed;
@@ -162,7 +154,7 @@ body {
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
     width: 300px;
     z-index: 600;
-    background-color:white;
+    background-color: white;
 }
 
 @media (max-width: 991.98px) {
@@ -177,17 +169,17 @@ body {
 }
 
 
+
+
 /*Mensaje de error formulario*/
 .mensaje_error {
     font-size: 15px;
     margin-bottom: 0;
     display: none;
-    color:dimgrey;
+    color: dimgrey;
 }
 
 
 .mensaje_error_activo {
     display: block;
 }
-
-

@@ -17,9 +17,10 @@ namespace BussinesLogic.Services
             _baseurl = "http://localhost:3033";
         }
 
-        public UserModel Create(UserModel usuarios)
+        public bool Create(UserModel usuarios)
         {
             var users = new UserModel();
+            bool res = false;
 
             try
             {
@@ -40,6 +41,7 @@ namespace BussinesLogic.Services
                         var rest = respuesta.Result.Content.ReadAsStringAsync();
                         //Se formatea la informacion de la respuesta a una model creado anteriormente
                         users = JsonConvert.DeserializeObject<UserModel>(rest.Result);
+                        res = true;
                     }
 
                 }
@@ -50,7 +52,7 @@ namespace BussinesLogic.Services
                 throw;
             }
 
-            return users;
+            return res;
         }
 
         //Metodo para eliminar registros 
