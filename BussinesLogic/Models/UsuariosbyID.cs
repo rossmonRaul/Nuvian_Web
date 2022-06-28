@@ -6,15 +6,19 @@ namespace BussinesLogic.Models
 {
     public class UsuariosbyID
     {
-        public int id_usr { get; set; }
-        public int identificacion { get; set; }
-        public string contrasena { get; set; }
-        public string nombre { get; set; }
-        public string primer_apellido { get; set; }
-        public string segundo_apellido { get; set; }
-        public string correo { get; set; }
-        public int telefono { get; set; }
-        public System.DateTime fechanacimiento { get; set; }
-        public int id_aeropuerto { get; set; }
+
+        public int Id_usr { get; set; }
+        public int Identificacion { get; set; }
+        public string Contrasena { get; set; }
+        public string Nombre { get; set; }
+        public string Primer_apellido { get; set; }
+        public string Segundo_apellido { get; set; }
+        public string Correo { get; set; }
+        public int Telefono { get; set; }
+        public System.DateTime Fecha_nacimiento { get; set; }
+        public int Id_aeropuerto { get; set; }
+
+    
+
     }
 }

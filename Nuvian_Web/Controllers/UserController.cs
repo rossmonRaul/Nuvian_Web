@@ -51,7 +51,7 @@ namespace Nuvian_Web.Controllers
             try
             {
              
-                return _service.Delete(user.ID_USR); 
+                return _service.Delete(user.Id_usr); 
 
             }
             catch (Exception)
