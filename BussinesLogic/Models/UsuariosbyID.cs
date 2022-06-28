@@ -6,6 +6,7 @@ namespace BussinesLogic.Models
 {
     public class UsuariosbyID
     {
+
         public int Id_usr { get; set; }
         public int Identificacion { get; set; }
         public string Contrasena { get; set; }
@@ -16,5 +17,8 @@ namespace BussinesLogic.Models
         public int Telefono { get; set; }
         public System.DateTime Fecha_nacimiento { get; set; }
         public int Id_aeropuerto { get; set; }
+
+    
+
     }
 }

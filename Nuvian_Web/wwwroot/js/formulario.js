@@ -1,22 +1,24 @@
+
 ﻿jQuery(document).ready(function ($) {
 	$(document).ready(function () {
 		$('#slAeropuerto').select2();
 	});
+
 });
 
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const campos = {
-	Identificacion: false,
-	Password: false,
-	Nombre: false,
-	Apellido1: false,
-	Apellido2: false,
-	Correo: false,
-	Telefono: false,
-	Fecha: false,
-	Aeropuerto: false
+    Identificacion: false,
+    Password: false,
+    Nombre: false,
+    Apellido1: false,
+    Apellido2: false,
+    Correo: false,
+    Telefono: false,
+    Fecha: false,
+    Aeropuerto: false
 
 }
 
@@ -24,15 +26,16 @@ const campos = {
 
 const expresiones = {
 
-	nombre: /^[a-zA-Z ]{2,254}$/, 
-	password: /^([a-zA-Z0-9_-]){1,25}$/, 
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	numeros: /^\d{1,10}$/ 
+    nombre: /^[a-zA-Z ]{2,254}$/,
+    password: /^([a-zA-Z0-9_-]){1,25}$/,
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    numeros: /^\d{1,10}$/
 }
 
 
 //Validar inputs del formulario
 const validarFormulario = (e) => {
+
 	switch (e.target.name) {
 		case "txtIdentificacion":
 			validarDatos(expresiones.numeros, e.target, 'Identificacion');
@@ -62,84 +65,107 @@ const validarFormulario = (e) => {
 
 
 	}
+
 }
 
 /*Activar mensajes de error personalizados para cada input*/
-const validarDatos = (vali,input,campo)=>{
+const validarDatos = (vali, input, campo) => {
 
-	if (vali.test(input.value)) {
-		document.querySelector(`#g${campo} .mensaje_error`).classList.remove('mensaje_error_activo');
-		campos[campo] = true;
-	} else {
-		document.querySelector(`#g${campo} .mensaje_error`).classList.add('mensaje_error_activo');
-		campos[campo] = false;
-	}
-      ActivarBtnGuardar();
+    if (vali.test(input.value)) {
+        document.querySelector(`#g${campo} .mensaje_error`).classList.remove('mensaje_error_activo');
+        campos[campo] = true;
+    } else {
+        document.querySelector(`#g${campo} .mensaje_error`).classList.add('mensaje_error_activo');
+        campos[campo] = false;
+    }
+    ActivarBtnGuardar();
 }
 
-inputs.forEach((input) =>{
-	input.addEventListener('keyup', validarFormulario);
-	input.addEventListener('blur', validarFormulario);
+inputs.forEach((input) => {
+    input.addEventListener('keyup', validarFormulario);
+    input.addEventListener('blur', validarFormulario);
 });
 
 
 /*Validacion de fecha, para que no acepte nulos*/
 function validarFecha() {
+
 	const fecha = document.getElementById('txtFecha_nacimiento').value;
 
-	if (fecha == "") {
 
-		document.querySelector(`#gFecha .mensaje_error`).classList.add('mensaje_error_activo');
-		campos["Fecha"] = false;
+    if (fecha == "") {
 
-	} else {
-		document.querySelector(`#gFecha .mensaje_error`).classList.remove('mensaje_error_activo');
-		campos["Fecha"] = true;
-	}
-	ActivarBtnGuardar();
+        document.querySelector(`#gFecha .mensaje_error`).classList.add('mensaje_error_activo');
+        campos["Fecha"] = false;
+
+    } else {
+        document.querySelector(`#gFecha .mensaje_error`).classList.remove('mensaje_error_activo');
+        campos["Fecha"] = true;
+    }
+    ActivarBtnGuardar();
 
 }
 
 /*Validacion del aerpuerto, para que no acepte nulos*/
 function validarAeropuerto() {
+
 	const aeropuerto = document.getElementById('slAeropuerto').value;
 
-	if (aeropuerto == "0") {
 
-		document.querySelector(`#gAeropuerto .mensaje_error`).classList.add('mensaje_error_activo');
-		campos["Aeropuerto"] = false;
+    if (aeropuerto == "0") {
 
-	} else {
-		document.querySelector(`#gAeropuerto .mensaje_error`).classList.remove('mensaje_error_activo');
-		campos["Aeropuerto"] = true;
-	}
-	ActivarBtnGuardar();
+        document.querySelector(`#gAeropuerto .mensaje_error`).classList.add('mensaje_error_activo');
+        campos["Aeropuerto"] = false;
+
+    } else {
+        document.querySelector(`#gAeropuerto .mensaje_error`).classList.remove('mensaje_error_activo');
+        campos["Aeropuerto"] = true;
+    }
+    ActivarBtnGuardar();
 
 }
 
 
 function ActivarBtnGuardar() {
 
-	if (campos.Identificacion && campos.Password && campos.Nombre && campos.Apellido1 && campos.Apellido2 && campos.Correo && campos.Telefono && campos.Fecha && campos.Aeropuerto) {
+    if (campos.Identificacion && campos.Password && campos.Nombre && campos.Apellido1 && campos.Apellido2 && campos.Correo && campos.Telefono && campos.Fecha && campos.Aeropuerto) {
 
-		document.getElementById("btnGuardar").disabled = false;
+        document.getElementById("btnGuardar").disabled = false;
 
-	} else {
-		document.getElementById("btnGuardar").disabled = true;
-	}
+    } else {
+        document.getElementById("btnGuardar").disabled = true;
+    }
 }
 
 /* Consumo del api postUsuarios con ajax desde el controlador user*/
 
 $("#btnGuardar").click(function () {
 
+
 	const id = document.getElementById('txtId_usr').value;
 	
 
-	if (id == "") {
+    if (id == "") {
 
 
-		var user = {
+
+        var user = {
+
+            "Nombre": $("#nombre").val(),
+            "Apellido1": $("#apellido1").val(),
+            "Apellido2": $("#apellido2").val(),
+            "Cedula": $("#identificacion").val(),
+            "ID_Aeropuerto": $("#aeropuerto").val(),
+            "Correo": $("#correo").val(),
+            "Telefono": $("#telefono").val(),
+            "FechaNacimiento": $("#fecha").val(),
+            "Contraseña": $("#password").val()
+        }
+        $.ajax({
+            type: "POST",
+            url: "/User/NuevoUsuario",
+            data: user,
+            cache: false,
 
 			"Nombre": $("#txtNombre").val(),
 			"Apellido1": $("#txtApellido1").val(),
@@ -158,6 +184,8 @@ $("#btnGuardar").click(function () {
 			cache: false,
 
 
+      
+
 		}).done(function (res) {
 
 			if (res === true) {
@@ -167,10 +195,12 @@ $("#btnGuardar").click(function () {
 					type: 'success'
 				}).then(function () {
 
-					$('#Users_table').DataTable().ajax.reload();
 
-					window.location.href = 'http://localhost:9284/User/BasePage';
-				});
+                    $('#Users_table').DataTable().ajax.reload();
+
+                    window.location.href = 'http://localhost:9284/User/BasePage';
+                });
+
 
 
 			} else {
@@ -180,10 +210,10 @@ $("#btnGuardar").click(function () {
 
 
 
-
 	} else {
 		EditarUsuario();
 	}
+
 
 });
 
@@ -192,19 +222,17 @@ $("#btnGuardar").click(function () {
 $("#Users_table").on('click', '.btnDelete', function () {
 
 
-	var Id = $(this).attr("data-Id");
+    var Id = $(this).attr("data-Id");
 
-	Swal.fire({
-		title: "Eliminar usuario",
-		text: '¿Esta seguro que desea eliminar el usuario ' + Id + '?',
-		showDenyButton: true,
-		confirmButtonColor: '#57BA5B',
-		denyButtonColor: '#CF4238',
-		confirmButtonText: 'Aceptar',
-		denyButtonText: 'Cancelar',
-	}).then((result) => {
-
-		if (result.isConfirmed) {
+    Swal.fire({
+        title: "Eliminar usuario",
+        text: '¿Esta seguro que desea eliminar el usuario ' + Id + '?',
+        showDenyButton: true,
+        confirmButtonColor: '#57BA5B',
+        denyButtonColor: '#CF4238',
+        confirmButtonText: 'Aceptar',
+        denyButtonText: 'Cancelar',
+    }).then((result) => {
 
 			var user = {
 				"Id_usr": Id,
@@ -221,25 +249,32 @@ $("#Users_table").on('click', '.btnDelete', function () {
 
 					$('#Users_table').DataTable().ajax.reload();
 
-				} else {
-					Swal.fire('Hubo un error al eliminar el usuario')
-				}
-			});
 
-		} else {
+                if (res == true) {
+                    Swal.fire('Se eliminó el usuario')
 
-		}
-	})
+                    $('#tablaClientes').DataTable().ajax.reload();
 
+                } else {
+                    Swal.fire('Hubo un error al eliminar el usuario')
+                }
+            });
 
+        } else {
+
+        }
+    })
 
 });
 
 $(document).ready(function () {
+
 	cargarcombo();
+
 })
 
 function cargarcombo() {
+
 
 	$.ajax({
 		url: '/User/CargarCombo',
@@ -254,11 +289,14 @@ function cargarcombo() {
 			}
 		}
 	})
+
+
 }
 
 /*Consumo del api listar usuarios en DataTable*/
 
 $('#Users_table').DataTable({
+
 	ajax: {
 		url: '/User/ListarUsuarios',
 		dataSrc: ''
@@ -388,5 +426,6 @@ function EditarUsuario() {
 		}
 	})
 }
+
 
 
