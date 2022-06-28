@@ -15,18 +15,18 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <input type="hidden" class="form-control" value="" id="idUSR" name="idUSR">
+            <input type="hidden" class="form-control" id="txtId_usr" name="txtId_usr">
             <div class="form-group" id="gIdentificacion">
-                <label class="etiquetas" for="InputID1">Identificación</label>
-                <input type="text" class="form-control" id="identificacion" name="identificacion">
+                <label class="etiquetas" for="lbIdentificacion">Identificación</label>
+                <input type="text" class="form-control" id="txtIdentificacion" name="txtIdentificacion">
                 <p class="mensaje_error">El usuario debe contener solo números, máximo 10 dígitos</p>
             </div>
 
         </div>
         <div class="col">
             <div class="form-group" id="gPassword">
-                <label class="etiquetas" for="InputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <label class="etiquetas" for="lbPassword">Contraseña</label>
+                <input type="password" class="form-control" id="txtPassword" name="txtPassword">
                 <p class="mensaje_error">La contraseña debe contener solo caracteres alfanumericos, máximo 25 dígitos</p>
             </div>
         </div>
@@ -40,16 +40,16 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group" id="gNombre">
-                <label class="etiquetas" for="InputNombre1">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" maxlength="25">
+                <label class="etiquetas" for="lbNombre">Nombre</label>
+                <input type="text" class="form-control" id="txtNombre" name="txtNombre" maxlength="25">
                 <p class="mensaje_error">El nombre debe contener solo letras, máximo 25 dígitos</p>
             </div>
 
         </div>
         <div class="col">
             <div class="form-group" id="gApellido1">
-                <label class="etiquetas" for="InputApellido1">Primer Apellido</label>
-                <input type="text" class="form-control" id="apellido1" name="apellido1" maxlength="25">
+                <label class="etiquetas" for="lbApellido1">Primer Apellido</label>
+                <input type="text" class="form-control" id="txtApellido1" name="txtApellido1" maxlength="25">
                 <p class="mensaje_error">El primer apellido debe contener solo letras, máximo 25 dígitos</p>
             </div>
         </div>
@@ -60,16 +60,16 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group" id="gApellido2">
-                <label class="etiquetas" for="InputApellido2">Segundo Apellido</label>
-                <input type="text" class="form-control" id="apellido2" name="apellido2" maxlength="25">
+                <label class="etiquetas" for="lbApellido2">Segundo Apellido</label>
+                <input type="text" class="form-control" id="txtApellido2" name="txtApellido2" maxlength="25">
                 <p class="mensaje_error">El segundo apellido debe contener solo letras, máximo 25 dígitos</p>
             </div>
 
         </div>
         <div class="col">
             <div class="form-group" id="gCorreo">
-                <label class="etiquetas" for="InputCorreo1">Correo Electrónico</label>
-                <input type="email" class="form-control" id="correo" name="correo" placeholder="example@gmail.com">
+                <label class="etiquetas" for="lbCorreo">Correo Electrónico</label>
+                <input type="email" class="form-control" id="txtCorreo" name="txtCorreo" placeholder="example@gmail.com">
                 <p class="mensaje_error">El correo debe tener como máximo 25 dígitos</p>
             </div>
         </div>
@@ -80,15 +80,15 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group" id="gTelefono">
-                <label class="etiquetas" for="InputTelefono1">Teléfono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="8888-8888">
+                <label class="etiquetas" for="lbTelefono">Teléfono</label>
+                <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" placeholder="8888-8888">
                 <p class="mensaje_error">El telefono debe contener solo números, máximo 10 dígitos</p>
             </div>
         </div>
         <div class="col">
             <div class="form-group" id="gFecha">
-                <label class="etiquetas" for="InputCorreo1">Fecha Nacimiento</label>
-                <input type="date" class="form-control" id="fecha" name="fecha">
+                <label class="etiquetas" for="lbFecha_nacimiento">Fecha Nacimiento</label>
+                <input type="date" class="form-control" id="txtFecha_nacimiento" name="txtFecha_nacimiento">
                 <p class="mensaje_error">La fecha de nacimiento es requerida</p>
             </div>
 
@@ -102,10 +102,8 @@
         <div class="col"></div>
         <div class="col">
             <div class="form-group" id="gAeropuerto">
-                <label class="etiquetas" for="InputAeropuerto2">Aeropuerto</label>
-                <select id="aeropuerto" class="form-control js-example-basic-single  " onchange="validarAeropuerto()">
-                  
-
+                <label class="etiquetas" for="lbAeropuerto">Aeropuerto</label>
+                <select id="slAeropuerto" class="form-control js-example-basic-single  " onchange="validarAeropuerto()">
                 </select>
                 <p class="mensaje_error">El aeropuerto es requerido</p>
             </div>

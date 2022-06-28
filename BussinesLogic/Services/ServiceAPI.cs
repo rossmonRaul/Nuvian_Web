@@ -59,7 +59,7 @@ namespace BussinesLogic.Services
         public bool Delete(int id)
         {
             var users = new UserModel();
-            users.ID_USR = id;
+            users.Id_usr = id;
 
             bool res = false;
 
@@ -70,7 +70,7 @@ namespace BussinesLogic.Services
 
                     string obj = JsonConvert.SerializeObject(users);
                     var content = new StringContent(obj, Encoding.UTF8, "application/json");
-                    var respuesta = cliente.DeleteAsync(_baseurl + "/api/users/deleteUsuarios/" + users.ID_USR);
+                    var respuesta = cliente.DeleteAsync(_baseurl + "/api/users/deleteUsuarios/" + users.Id_usr);
                     respuesta.Wait();
 
                     if (respuesta.Result.IsSuccessStatusCode)
