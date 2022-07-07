@@ -1,8 +1,8 @@
 
-﻿jQuery(document).ready(function ($) {
-	$(document).ready(function () {
-		$('#slAeropuerto').select2();
-	});
+jQuery(document).ready(function ($) {
+    $(document).ready(function () {
+        $('#slAeropuerto').select2();
+    });
 
 });
 
@@ -36,35 +36,35 @@ const expresiones = {
 //Validar inputs del formulario
 const validarFormulario = (e) => {
 
-	switch (e.target.name) {
-		case "txtIdentificacion":
-			validarDatos(expresiones.numeros, e.target, 'Identificacion');
-			break;
-		case "txtPassword":
-			validarDatos(expresiones.password, e.target, 'Password');
-			break;
-		case "txtNombre":
-			validarDatos(expresiones.nombre, e.target, 'Nombre');
+    switch (e.target.name) {
+        case "txtIdentificacion":
+            validarDatos(expresiones.numeros, e.target, 'Identificacion');
+            break;
+        case "txtPassword":
+            validarDatos(expresiones.password, e.target, 'Password');
+            break;
+        case "txtNombre":
+            validarDatos(expresiones.nombre, e.target, 'Nombre');
 
-			break;
-		case "txtApellido1":
-			validarDatos(expresiones.nombre, e.target, 'Apellido1');
-			break;
-		case "txtApellido2":
-			validarDatos(expresiones.nombre, e.target, 'Apellido2');
-			break;
-		case "txtCorreo":
-			validarDatos(expresiones.correo, e.target, 'Correo');
-			break;
-		case "txtTelefono":
-			validarDatos(expresiones.numeros, e.target, 'Telefono');
-			break;
-		case "txtFecha_nacimiento":
-			validarFecha();
-			break;
+            break;
+        case "txtApellido1":
+            validarDatos(expresiones.nombre, e.target, 'Apellido1');
+            break;
+        case "txtApellido2":
+            validarDatos(expresiones.nombre, e.target, 'Apellido2');
+            break;
+        case "txtCorreo":
+            validarDatos(expresiones.correo, e.target, 'Correo');
+            break;
+        case "txtTelefono":
+            validarDatos(expresiones.numeros, e.target, 'Telefono');
+            break;
+        case "txtFecha_nacimiento":
+            validarFecha();
+            break;
 
 
-	}
+    }
 
 }
 
@@ -90,7 +90,7 @@ inputs.forEach((input) => {
 /*Validacion de fecha, para que no acepte nulos*/
 function validarFecha() {
 
-	const fecha = document.getElementById('txtFecha_nacimiento').value;
+    const fecha = document.getElementById('txtFecha_nacimiento').value;
 
 
     if (fecha == "") {
@@ -109,7 +109,7 @@ function validarFecha() {
 /*Validacion del aerpuerto, para que no acepte nulos*/
 function validarAeropuerto() {
 
-	const aeropuerto = document.getElementById('slAeropuerto').value;
+    const aeropuerto = document.getElementById('slAeropuerto').value;
 
 
     if (aeropuerto == "0") {
@@ -142,58 +142,37 @@ function ActivarBtnGuardar() {
 $("#btnGuardar").click(function () {
 
 
-	const id = document.getElementById('txtId_usr').value;
-	
+    const id = document.getElementById('txtId_usr').value;
+
 
     if (id == "") {
 
 
 
         var user = {
-
-            "Nombre": $("#nombre").val(),
-            "Apellido1": $("#apellido1").val(),
-            "Apellido2": $("#apellido2").val(),
-            "Cedula": $("#identificacion").val(),
-            "ID_Aeropuerto": $("#aeropuerto").val(),
-            "Correo": $("#correo").val(),
-            "Telefono": $("#telefono").val(),
-            "FechaNacimiento": $("#fecha").val(),
-            "Contraseña": $("#password").val()
+            "Nombre": $("#txtNombre").val(),
+            "Apellido1": $("#txtApellido1").val(),
+            "Apellido2": $("#txtApellido2").val(),
+            "Cedula": $("#txtIdentificacion").val(),
+            "Id_aeropuerto": $("#slAeropuerto").val(),
+            "Correo": $("#txtCorreo").val(),
+            "Telefono": $("#txtTelefono").val(),
+            "Fecha_nacimiento": $("#txtFecha_nacimiento").val(),
+            "Contraseña": $("#txtPassword").val()
         }
         $.ajax({
             type: "POST",
             url: "/User/NuevoUsuario",
             data: user,
             cache: false,
+        }).done(function (res) {
 
-			"Nombre": $("#txtNombre").val(),
-			"Apellido1": $("#txtApellido1").val(),
-			"Apellido2": $("#txtApellido2").val(),
-			"Cedula": $("#txtIdentificacion").val(),
-			"Id_aeropuerto": $("#slAeropuerto").val(),
-			"Correo": $("#txtCorreo").val(),
-			"Telefono": $("#txtTelefono").val(),
-			"Fecha_nacimiento": $("#txtFecha_nacimiento").val(),
-			"Contraseña": $("#txtPassword").val()
-		}
-		$.ajax({
-			type: "POST",
-			url: "/User/NuevoUsuario",
-			data: user,
-			cache: false,
-
-
-      
-
-		}).done(function (res) {
-
-			if (res === true) {
-				swal.fire({
-					title: "Usuario agregado",
-					text: "El usuario se guardó de manera exitosa ",
-					type: 'success'
-				}).then(function () {
+            if (res === true) {
+                swal.fire({
+                    title: "Usuario agregado",
+                    text: "El usuario se guardó de manera exitosa ",
+                    type: 'success'
+                }).then(function () {
 
 
                     $('#Users_table').DataTable().ajax.reload();
@@ -203,16 +182,16 @@ $("#btnGuardar").click(function () {
 
 
 
-			} else {
-				Swal.fire('Hubo un error al guardar el usuario')
-			}
-		});
+            } else {
+                Swal.fire('Hubo un error al guardar el usuario')
+            }
+        });
 
 
 
-	} else {
-		EditarUsuario();
-	}
+    } else {
+        EditarUsuario();
+    }
 
 
 });
@@ -234,20 +213,20 @@ $("#Users_table").on('click', '.btnDelete', function () {
         denyButtonText: 'Cancelar',
     }).then((result) => {
 
-			var user = {
-				"Id_usr": Id,
-			}
-			$.ajax({
-				type: "POST",
-				url: "/User/EliminarUsuario",
-				data: user,
-				cache: false
-			}).done(function (res) {
-				
-				if (res == true) {
-					Swal.fire('Se eliminó el usuario')
+        var user = {
+            "Id_usr": Id,
+        }
+        $.ajax({
+            type: "POST",
+            url: "/User/EliminarUsuario",
+            data: user,
+            cache: false
+        }).done(function (res) {
 
-					$('#Users_table').DataTable().ajax.reload();
+            if (res == true) {
+                Swal.fire('Se eliminó el usuario')
+
+                $('#Users_table').DataTable().ajax.reload();
 
 
                 if (res == true) {
@@ -258,37 +237,37 @@ $("#Users_table").on('click', '.btnDelete', function () {
                 } else {
                     Swal.fire('Hubo un error al eliminar el usuario')
                 }
-            });
 
-        } else {
+            } else {
 
-        }
-    })
+            }
+        })
 
-});
+    });
+})
 
 $(document).ready(function () {
 
-	cargarcombo();
+    cargarcombo();
 
 })
 
 function cargarcombo() {
 
 
-	$.ajax({
-		url: '/User/CargarCombo',
-		type: 'GET',
-		dataType: 'json',
-		success: function (data) {
-			$('#slAeropuerto').get(0).options.length = 0;
+    $.ajax({
+        url: '/User/CargarCombo',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $('#slAeropuerto').get(0).options.length = 0;
 
-			$('#slAeropuerto').get(0).options[0] = new Option('---Seleccione---', 0);
-			for (const item of data) {
-				$('#slAeropuerto').get(0).options[item.iD_Aeropuerto] = new Option(item.nombre + "-" + item.nombre_OACI, item.iD_Aeropuerto);
-			}
-		}
-	})
+            $('#slAeropuerto').get(0).options[0] = new Option('---Seleccione---', 0);
+            for (const item of data) {
+                $('#slAeropuerto').get(0).options[item.iD_Aeropuerto] = new Option(item.nombre + "-" + item.nombre_OACI, item.iD_Aeropuerto);
+            }
+        }
+    })
 
 
 }
@@ -297,135 +276,146 @@ function cargarcombo() {
 
 $('#Users_table').DataTable({
 
-	ajax: {
-		url: '/User/ListarUsuarios',
-		dataSrc: ''
-	},
-	columns: [{ data: 'id_usr' },
-	{ data: 'cedula' },
-	{ data: 'nombre' },
-	{ data: 'primer_apellido' },
-	{ data: 'segundo_apellido' },
-	{ data: 'aeropuerto' },
-	{ data: 'correo' },
-	{ data: 'fecha_ingreso' },
-	{
-		'data': 'id_usr', render: function (data, type, row) {
-			return '<button " class="btn btn-success btn-sm btnEdit" data-Id=' + row.id_usr + '><i class="bi bi-pencil-square"></i></button>';
+    ajax: {
+        url: '/User/ListarUsuarios',
+        dataSrc: ''
+    },
+    columns: [{ data: 'id_usr' },
+    { data: 'cedula' },
+    { data: 'nombre' },
+    { data: 'primer_apellido' },
+    { data: 'segundo_apellido' },
+    { data: 'aeropuerto' },
+    { data: 'correo' },
+    { data: 'fecha_ingreso' },
+    {
+        'data': 'id_usr', render: function (data, type, row) {
+            return '<button " class="btn btn-success btn-sm btnEdit" data-Id=' + row.id_usr + '><i class="bi bi-pencil-square"></i></button>';
 
-		}
-	},
-	{
-		'data': 'id_usr', render: function (data, type, row) {
-			return '<button class="btn btn-danger btn-sm btnDelete" data-Id=' + row.id_usr + '><i class="bi bi-trash"></button>';
+        }
+    },
+    {
+        'data': 'id_usr', render: function (data, type, row) {
+            return '<button class="btn btn-danger btn-sm btnDelete" data-Id=' + row.id_usr + '><i class="bi bi-trash"></button>';
 
-		}
-	}
+        }
+    }
 
-	]
+    ]
 });
 
 $("#Users_table").on('click', '.btnEdit', function () {
-	var Id = $(this).attr("data-Id");
-	$.ajax({
-		url: '/User/BuscarUsarioID',
-		type: 'GET',
-		dataType: 'json',
-		data: { id: Id },
-		success: function (data) {
-			let fechaNacimiento;
-			let fechaFinal;
-			for (const item of data) {
-				fechaNacimiento = new Date(item.fecha_nacimiento);
-				fechaFinal = fechaNacimiento.toISOString().split('T')[0];
-				document.getElementById('txtId_usr').value = item.id_usr;
-				document.getElementById('txtIdentificacion').value = item.identificacion;
-				document.getElementById('txtPassword').value = item.contrasena;
-				document.getElementById('txtNombre').value = item.nombre;
-				document.getElementById('txtApellido1').value = item.primer_apellido;
-				document.getElementById('txtApellido2').value = item.segundo_apellido;
-				document.getElementById('txtCorreo').value = item.correo;
-				document.getElementById('txtTelefono').value = item.telefono;
-				document.getElementById('txtFecha_nacimiento').value = fechaFinal;
-				var select = document.getElementById("slAeropuerto");
+    var Id = $(this).attr("data-Id");
+    $.ajax({
+        url: '/User/BuscarUsarioID',
+        type: 'GET',
+        dataType: 'json',
+        data: { id: Id },
+        success: function (data) {
+            let fechaNacimiento;
+            let fechaFinal;
+            for (const item of data) {
+                fechaNacimiento = new Date(item.fecha_nacimiento);
+                fechaFinal = fechaNacimiento.toISOString().split('T')[0];
+                document.getElementById('txtId_usr').value = item.id_usr;
+                document.getElementById('txtIdentificacion').value = item.identificacion;
+                document.getElementById('txtPassword').value = item.contrasena;
+                document.getElementById('txtNombre').value = item.nombre;
+                document.getElementById('txtApellido1').value = item.primer_apellido;
+                document.getElementById('txtApellido2').value = item.segundo_apellido;
+                document.getElementById('txtCorreo').value = item.correo;
+                document.getElementById('txtTelefono').value = item.telefono;
+                document.getElementById('txtFecha_nacimiento').value = fechaFinal;
+                var select = document.getElementById("slAeropuerto");
 
-				// recorremos todos los valores del select
-				for (var i = 1; i < select.length; i++) {
-					if (select.options[i].value == item.id_aeropuerto) {
-						// seleccionamos el valor que coincide
-						select.selectedIndex = i;
-						var txt = select.options[select.selectedIndex].text;
-						$('#slAeropuerto').get(0).options[0] = new Option(txt, "");
-						select.options[0].style.display = "none";
-					}
-				}
+                // recorremos todos los valores del select
+                for (var i = 1; i < select.length; i++) {
+                    if (select.options[i].value == item.id_aeropuerto) {
+                        // seleccionamos el valor que coincide
+                        select.selectedIndex = i;
+                        var txt = select.options[select.selectedIndex].text;
+                        $('#slAeropuerto').get(0).options[0] = new Option(txt, "");
+                        select.options[0].style.display = "none";
+                    }
+                }
 
-				campos['Identificacion'] = true;
-				campos['Password'] = true;
-				campos['Nombre'] = true;
-				campos['Apellido1'] = true;
-				campos['Apellido2'] = true;
-				campos['Correo'] = true;
-				campos['Telefono'] = true;
-				campos['Fecha'] = true;
-				campos['Aeropuerto'] = true;
+                campos['Identificacion'] = true;
+                campos['Password'] = true;
+                campos['Nombre'] = true;
+                campos['Apellido1'] = true;
+                campos['Apellido2'] = true;
+                campos['Correo'] = true;
+                campos['Telefono'] = true;
+                campos['Fecha'] = true;
+                campos['Aeropuerto'] = true;
 
-				document.getElementById("btnGuardar").disabled = false;
-			}
-		}
-	})
+                document.getElementById("btnGuardar").disabled = false;
+            }
+        }
+    })
 })
 
 function EditarUsuario() {
 
-	const actualizar = {
-		ID_USR: document.getElementById('txtId_usr').value,
-		Contrasena: document.getElementById('txtPassword').value,
-		Nombre: document.getElementById('txtNombre').value,
-		Apellido1: document.getElementById('txtApellido1').value,
-		Apellido2: document.getElementById('txtApellido2').value,
-		Cedula: document.getElementById('txtIdentificacion').value,
-		ID_Aeropuerto: document.getElementById("slAeropuerto").value,
-		Correo: document.getElementById('txtCorreo').value,
-		Telefono: document.getElementById('txtTelefono').value,
-		FechaNacimiento: document.getElementById('txtFecha_nacimiento').value
-	}
-	$.ajax({
-		url: '/User/EditarUsuario',
-		type: 'POST',
-		dataType: 'json',
-		data: { actualizar },
-		success: function (data) {
-			if (data == true) {
-				Swal.fire({
-					title: "Usuario editado con éxito",
-					text: 'El usuario ' + actualizar.Nombre + ' ' + actualizar.Apellido1 + ' ' + actualizar.Apellido2 + ' se ha actualizado correctamente',
-					icon: 'success',
-					timer: 5000
-				})
-				$('#Users_table').DataTable().ajax.reload();
-				document.getElementById('txtId_usr').value = '';
-				document.getElementById('txtPassword').value = '';
-				document.getElementById('txtNombre').value = '';
-				document.getElementById('txtApellido1').value = '';
-				document.getElementById('txtApellido2').value = '';
-				document.getElementById('txtIdentificacion').value = '';
-				document.getElementById('txtCorreo').value = '';
-				document.getElementById('txtTelefono').value = '';
-				document.getElementById('txtFecha_nacimiento').value = '';
-				cargarcombo();
+    const actualizar = {
+        ID_USR: document.getElementById('txtId_usr').value,
+        Contrasena: document.getElementById('txtPassword').value,
+        Nombre: document.getElementById('txtNombre').value,
+        Apellido1: document.getElementById('txtApellido1').value,
+        Apellido2: document.getElementById('txtApellido2').value,
+        Cedula: document.getElementById('txtIdentificacion').value,
+        ID_Aeropuerto: document.getElementById("slAeropuerto").value,
+        Correo: document.getElementById('txtCorreo').value,
+        Telefono: document.getElementById('txtTelefono').value,
+        FechaNacimiento: document.getElementById('txtFecha_nacimiento').value
+    }
+    $.ajax({
+        url: '/User/EditarUsuario',
+        type: 'POST',
+        dataType: 'json',
+        data: { actualizar },
+        success: function (data) {
+            if (data == true) {
+                Swal.fire({
+                    title: "Usuario editado con éxito",
+                    text: 'El usuario ' + actualizar.Nombre + ' ' + actualizar.Apellido1 + ' ' + actualizar.Apellido2 + ' se ha actualizado correctamente',
+                    icon: 'success',
+                    timer: 5000
+                })
+                $('#Users_table').DataTable().ajax.reload();
+                document.getElementById('txtId_usr').value = '';
+                document.getElementById('txtPassword').value = '';
+                document.getElementById('txtNombre').value = '';
+                document.getElementById('txtApellido1').value = '';
+                document.getElementById('txtApellido2').value = '';
+                document.getElementById('txtIdentificacion').value = '';
+                document.getElementById('txtCorreo').value = '';
+                document.getElementById('txtTelefono').value = '';
+                document.getElementById('txtFecha_nacimiento').value = '';
+                cargarcombo();
 
-			} else {
-				Swal.fire({
-					title: "Ha ocurrido un error",
-					text: 'El usuario ' + actualizar.Nombre + ' ' + actualizar.Apellido1 + ' ' + actualizar.Apellido2 + ' no se ha podido actualizar, revise que los datos estén correctos.',
-					icon: 'error',
-					timer: 5000
-				})
-			}
-		}
-	})
+            } else {
+                Swal.fire({
+                    title: "Ha ocurrido un error",
+                    text: 'El usuario ' + actualizar.Nombre + ' ' + actualizar.Apellido1 + ' ' + actualizar.Apellido2 + ' no se ha podido actualizar, revise que los datos estén correctos.',
+                    icon: 'error',
+                    timer: 5000
+                })
+            }
+        }
+    })
 }
 
-
+$('#btnCancelar').click(function () {
+    document.getElementById('txtId_usr').value = '';
+    document.getElementById('txtPassword').value = '';
+    document.getElementById('txtNombre').value = '';
+    document.getElementById('txtApellido1').value = '';
+    document.getElementById('txtApellido2').value = '';
+    document.getElementById('txtIdentificacion').value = '';
+    document.getElementById('txtCorreo').value = '';
+    document.getElementById('txtTelefono').value = '';
+    document.getElementById('txtFecha_nacimiento').value = '';
+    cargarcombo();
+})
 
